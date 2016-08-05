@@ -1,4 +1,10 @@
-Version 3.0-0 (2013-07-20)
+Version 4.0-1 (2015-09-04)
+o Updated with data for the 2014 season
+o Changes to reflect alterations in the 2014 schema:
+  o Removed from Batting: G_batting, G_old
+  o Replaced SchoolsPlayers with CollegePlaying
+
+Version 3.0-0 (2014-07-20)
 o Updated with data for the 2013 season
 o Changes to reflect alterations in the 2013 schema:
   o HallOfFame$hofID is now HallOfFame$playerID

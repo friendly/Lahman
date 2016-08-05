@@ -1,6 +1,11 @@
+.Rhistory
 *.csv
-data/readme2013.txt
-data/lahman-csv_2014-02-14.zip
+*.zip
+data/readme*.txt
+data/lahman-csv*.zip
 data/*.Rd
 data/.RData
 data/.Rhistory
+.RData
+.Rproj.user
+Lahman.Rproj

@@ -7,9 +7,16 @@ indir <- "D:/Dev/R/Lahman/data"
 #outdir <- paste0(indir, "RData")
 outdir <- indir
 
-zipfile <- "http://seanlahman.com/files/database/lahman-csv_2014-02-14.zip"
-download.file(zipfile, "./lahman-csv_2014-02-14.zip")
-unzip("./lahman-csv_2014-02-14.zip", exdir=indir)
+# local data location
+dataFile <- "./lahman-csv_2015-01-24.zip"
+
+# no need to download if we already have the file
+if (!file.exists(dataFile)) {
+  zipfile <- "http://seanlahman.com/files/database/lahman-csv_2015-01-24.zip"
+  download.file(zipfile, dataFile)
+}
+
+unzip(dataFile, exdir=indir)
 
 setwd(indir)
 
@@ -17,7 +24,7 @@ setwd(indir)
 #Batting <- read.csv(file="Batting.csv", header=TRUE, stringsAsFactors=FALSE, na.strings="")
 #Master <- read.csv(file="Master.csv", header=TRUE, stringsAsFactors=FALSE)
 
-(files <- list.files(path=indir, pattern="*.csv"))
+(files <- list.files(path=indir, pattern="*.csv$"))
 
 for (i in 1:length(files)) {
 	inp <- read.csv(file=files[i], header=TRUE, stringsAsFactors=FALSE, na.strings="")
@@ -93,7 +100,8 @@ save(AwardsPlayers,       file="AwardsPlayers.RData")
 save(AwardsShareManagers, file="AwardsShareManagers.RData")
 save(AwardsSharePlayers,  file="AwardsSharePlayers.RData") 
 save(Batting,             file="Batting.RData")            
-save(BattingPost,         file="BattingPost.RData")        
+save(BattingPost,         file="BattingPost.RData")
+save(CollegePlaying,      file="CollegePlaying.RData")
 save(Fielding,            file="Fielding.RData")           
 save(FieldingOF,          file="FieldingOF.RData")         
 save(FieldingPost,        file="FieldingPost.RData")       
@@ -106,7 +114,7 @@ save(Pitching,            file="Pitching.RData")
 save(PitchingPost,        file="PitchingPost.RData")       
 save(Salaries,            file="Salaries.RData")           
 save(Schools,             file="Schools.RData")            
-save(SchoolsPlayers,      file="SchoolsPlayers.RData")     
+#save(SchoolsPlayers,      file="SchoolsPlayers.RData")
 save(SeriesPost,          file="SeriesPost.RData")         
 save(Teams,               file="Teams.RData")              
 save(TeamsFranchises,     file="TeamsFranchises.RData")    
@@ -123,7 +131,8 @@ promptData(AwardsPlayers,       filename="AwardsPlayers.Rd")
 promptData(AwardsShareManagers, filename="AwardsShareManagers.Rd")
 promptData(AwardsSharePlayers,  filename="AwardsSharePlayers.Rd") 
 promptData(Batting,             filename="Batting.Rd")            
-promptData(BattingPost,         filename="BattingPost.Rd")        
+promptData(BattingPost,         filename="BattingPost.Rd")
+promptData(CollegePlaying,      filename="CollegePlaying.Rd") 
 promptData(Fielding,            filename="Fielding.Rd")           
 promptData(FieldingOF,          filename="FieldingOF.Rd")         
 promptData(FieldingPost,        filename="FieldingPost.Rd")       
@@ -135,8 +144,7 @@ promptData(Master,              filename="Master.Rd")
 promptData(Pitching,            filename="Pitching.Rd")           
 promptData(PitchingPost,        filename="PitchingPost.Rd")       
 promptData(Salaries,            filename="Salaries.Rd")           
-promptData(Schools,             filename="Schools.Rd")            
-promptData(SchoolsPlayers,      filename="SchoolsPlayers.Rd")     
+promptData(Schools,             filename="Schools.Rd")
 promptData(SeriesPost,          filename="SeriesPost.Rd")         
 promptData(Teams,               filename="Teams.Rd")              
 promptData(TeamsFranchises,     filename="TeamsFranchises.Rd")    
